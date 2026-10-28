@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="ky">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Куран китеби</title>
+
+    <style>
+      body {
+        background: #173d2b;
+        color: white;
+        text-align: center;
+        font-family: Arial;
+      }
+
+      select,
+      button {
+        padding: 10px;
+        margin: 8px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .book {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        background: #0f5132;
+        border: 3px solid gold;
+        padding: 15px;
+        border-radius: 15px;
+      }
+
+      #paper {
+        width: 550px;
+        height: 450px;
+        overflow: auto;
+        background: #fffdf5;
+        color: #222;
+        padding: 20px;
+        direction: rtl;
+        font-size: 28px;
+        line-height: 2;
+      }
+
+      h2 {
+        color: green;
+      }
+
+      audio {
+        width: 300px;
+        max-width: 90%;
+      }
+
+      @media (max-width: 650px) {
+        #paper {
+          width: 100%;
+          height: 400px;
+          padding: 10px;
+          font-size: 22px;
+        }
+
+        .book {
+          padding: 5px;
+          gap: 3px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>القرآن الكريم</h1>
+
+    <select id="select"></select>
+    <button onclick="first()">Башына</button>
+
+    <div class="book">
+      <button onclick="change(-1)">→</button>
+      <div id="paper">Жүктөлүүдө...</div>
+      <button onclick="change(1)">←</button>
+    </div>
+
+    <p id="num"></p>
+
+    <h3>🎧 Карыны танда</h3>
+
+    <select id="reciter">
+      <option value="العفاسي">Мишари аль-Афаси</option>
+      <option value="السديس">Абдуррахман ас-Судайс</option>
+      <option value="المعيقلي">Махер аль-Муайкли</option>
+      <option value="عبدالباسط">Абдулбасит Абдуссамад</option>
+      <option value="الدوسري">Ясир ад-Досари</option>
+      <option value="الغامدي">Саад аль-Гамиди</option>
+    </select>
+    <button onclick="playSound()">▶ Угуу</button>
+    <audio id="audio" controls></audio>
+
+    <script>
+      const names = [
+        "Аль-Фатиха — Ачуучу",
+        "Аль-Бакара — Бакара",
+        "Аали Имран — Имран үй-бүлөсү",
+        "Ан-Ниса — Аялдар",
+        "Аль-Маида — Дасторкон",
+        "Аль-Анъам — Малдар",
+        "Аль-Аъраф — Бийиктиктер",
+        "Аль-Анфал — Олжолор",
+        "Ат-Тавба — Тобо",
+        "Юнус",
+        "Худ",
+        "Юсуф — Жусуп",
+        "Ар-Раад — Күн күркүрөө",
+        "Ибрахим",
+        "Аль-Хижр",
+        "Ан-Нахл — Аары",
+        "Аль-Исра — Түнкү сапар",
+        "Аль-Кахф — Үңкүр",
+        "Марям",
+        "Таха",
+        "Аль-Анбия — Пайгамбарлар",
+        "Аль-Хаж",
+        "Аль-Муминун — Ыймандуулар",
+        "Ан-Нур — Жарык",
+        "Аль-Фуркан — Ажыратуучу",
+        "Аш-Шуара — Акындар",
+        "Ан-Намл — Кумурскалар",
+        "Аль-Касас — Баяндоо",
+        "Аль-Анкабут — Жөргөмүш",
+        "Ар-Рум — Румдуктар",
+        "Лукман",
+        "Ас-Сажда",
+        "Аль-Ахзаб — Топтор",
+        "Саба",
+        "Фатыр — Жаратуучу",
+        "Ясин",
+        "Ас-Саффат",
+        "Сад",
+        "Аз-Зумар — Топтор",
+        "Гафир — Кечирүүчү",
+        "Фуссилат",
+        "Аш-Шура — Кеңеш",
+        "Аз-Зухруф",
+        "Ад-Духан — Түтүн",
+        "Аль-Жасия",
+        "Аль-Ахкаф",
+        "Мухаммад",
+        "Аль-Фатх — Жеңиш",
+        "Аль-Хужурат",
+        "Каф",
+        "Аз-Зарият",
+        "Ат-Тур",
+        "Ан-Нажм — Жылдыз",
+        "Аль-Камар — Ай",
+        "Ар-Рахман — Ырайымдуу",
+        "Аль-Вакиа",
+        "Аль-Хадид — Темир",
+        "Аль-Мужадила",
+        "Аль-Хашр — Чогултуу",
+        "Аль-Мумтахана",
+        "Ас-Сафф — Катар",
+        "Аль-Жума — Жума",
+        "Аль-Мунафикун",
+        "Ат-Тагабун",
+        "Ат-Талак",
+        "Ат-Тахрим",
+        "Аль-Мульк — Бийлик",
+        "Аль-Калам — Калем",
+        "Аль-Хакка",
+        "Аль-Маариж",
+        "Нух",
+        "Аль-Жинн",
+        "Аль-Муззаммил",
+        "Аль-Муддассир",
+        "Аль-Кыяма — Кыямат",
+        "Аль-Инсан — Адам",
+        "Аль-Мурсалат",
+        "Анабба",
+        "Ан-Назиат",
+        "Абаса",
+        "Ат-Таквир",
+        "Аль-Инфитар",
+        "Аль-Мутаффифин",
+        "Аль-Иншикак",
+        "Аль-Бурудж",
+        "Ат-Тарик",
+        "Аль-Аъла",
+        "Аль-Гашия",
+        "Аль-Фажр — Таң",
+        "Аль-Балад — Шаар",
+        "Аш-Шамс — Күн",
+        "Аль-Лайл — Түн",
+        "Ад-Духа",
+        "Аш-Шарх",
+        "Ат-Тин — Анжир",
+        "Аль-Алак",
+        "Аль-Кадр",
+        "Аль-Баййина",
+        "Аз-Залзала",
+        "Аль-Адият",
+        "Аль-Кариа",
+        "Ат-Такасур",
+        "Аль-Аср — Заман",
+        "Аль-Хумаза",
+        "Аль-Фил — Пил",
+        "Курайш",
+        "Аль-Маун",
+        "Аль-Каусар",
+        "Аль-Кафирун",
+        "Ан-Наср",
+        "Аль-Масад",
+        "Аль-Ихлас",
+        "Аль-Фалак",
+        "Ан-Нас — Адамдар",
+      ];
+
+      let chapters = [];
+      let surah = 1;
+      let page = 1;
+      let server = "";
+
+      const paper = document.getElementById("paper");
+      const select = document.getElementById("select");
+      const audio = document.getElementById("audio");
+
+      async function start() {
+        let res = await fetch("https://api.quran.com/api/v4/chapters");
+        chapters = (await res.json()).chapters;
+
+        chapters.forEach((c) => {
+          select.innerHTML += `
+      <option value="${c.id}">
+        ${c.name_arabic} — ${names[c.id - 1]}
+      </option>`;
+        }); 
+
+      await show();
+      }
+
+      async function getReciter() {
+        let r = await fetch("https://mp3quran.net/api/v3/reciters?language=ar");
+        let data = await r.json();
+
+        let name = document.getElementById("reciter").value;
+        let reciter = data.reciters.find((x) => x.name.includes(name));
+
+        if (reciter) {
+          server = reciter.moshaf[0].server;
+        } else {
+          alert("Кары табылган жок!");
+        }
+      }
+
+      async function show() {
+        let res = await fetch(
+          `https://api.quran.com/api/v4/verses/by_page/${page}?fields=text_uthmani&per_page=50`,
+        );
+
+        let data = await res.json();
+        paper.innerHTML = "";
+
+        let c = chapters[surah - 1];
+
+        if (page === c.pages[0]) {
+          paper.innerHTML = `<h2>${c.name_arabic}<br>${names[surah - 1]}</h2>`;
+        }
+
+        data.verses.forEach((v) => {
+          if (Number(v.verse_key.split(":")[0]) === surah) {
+            paper.innerHTML += v.text_uthmani + " ";
+          }
+        });
+
+        select.value = surah;
+        document.getElementById("num").textContent = "Бет " + page + " / 604";
+      }
+
+      async function change(n) {
+        page += n;
+
+        if (page < 1) page = 1;
+        if (page > 604) page = 604;
+
+        let c = chapters.find((c) => page >= c.pages[0] && page <= c.pages[1]);
+        if (c) surah = c.id;
+
+        await show();
+      }
+
+      function first() {
+        surah = 1;
+        page = 1;
+        show();
+      }
+
+      select.onchange = () => {
+        surah = Number(select.value);
+        page = chapters[surah - 1].pages[0];
+        show();
+      };
+
+      async function playSound() {
+        await getReciter();
+
+        if (!server) return;
+
+        audio.src = server + String(surah).padStart(3, "0") + ".mp3";
+        audio.play();
+      }
+
+      start();
+    </script>
+  </body>
+</html>

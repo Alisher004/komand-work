@@ -1,11 +1,175 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <h1>Aktan</h1>
-</body>
+  </head>
+  <body>
+    <h1>Autoworld</h1>
+    <nav>
+      <a href="./index.html">Главная</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Мир автомобилей</h2>
+    <p>Лучшие машины в одном месте</p>
+    <a href=""class="btn">Смотреть машины</a>
+  </section>
+
+  <section class="cards">
+    <div class="card">
+      <img src="https://avtomancar.ru/_pu/17/83578755.jpg" alt="Машина 1">
+      <img src="https://png.pngtree.com/png-clipart/20250519/original/pngtree-a-sleek-white-sports-car-with-aerodynamic-lines-black-accents-and-png-image_21032956.png" alt="машина2">
+      <img src="https://avatars.mds.yandex.net/get-vertis-journal/4465444/Erebos-X-1.webp_1680691431046/orig" alt="машина3">
+      <img src="https://tse3.mm.bing.net/th/id/OIP._9xjt5BXQMXuC6Ge2gigpwHaEo?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="">
+      <img src="https://static1.topspeedimages.com/wordpress/wp-content/uploads/2023/09/resize_dsc_0108.jpg" alt="">
+      <h3>Спорткары</h3>
+      <p>Скорость, мощность и стиль.</p>
+    </div>
+    <div class="card">
+      <img src="https://tse3.mm.bing.net/th/id/OIP.cBEVMPn-H5dPzRu6QpxkLAHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Машина 1">
+      <img src="https://tse1.mm.bing.net/th/id/OIP.9oeiA_l0muSC6TGvcmP-QgHaE4?r=0&w=2100&h=1386&rs=1&pid=ImgDetMain&o=7&rm=3" alt="машина3">
+      <img src="https://i.pinimg.com/736x/b4/b2/e3/b4b2e302912f42db6e4d60054209276d.jpg" alt="">
+      <img src="https://i.ytimg.com/vi/A-oDGM1Ff6U/maxresdefault.jpg" alt="">
+      <img src="https://novyny.live/cdn-cgi/imagedelivery/4_JwVYxosZqzJ7gIDJgTLA/af3763e6-fb0b-4f9f-fdb1-cc4bd0d65800/16x9" alt="">
+      <h3>Внедорожники</h3>
+      <p>Надёжность в любую погоду.</p>
+    </div>
+    <div class="card">
+        <img src="https://dvt-avto.ru/wp-content/uploads/2025/05/ea21124b3d151ff16c66372922de6ad6b03ee4719c3561466aab34a6015ce780.webp" alt="машина1">
+        <img src="https://globex-tyre.ru/wp-content/uploads/2025/06/15d6157b1a85051709a4acbdcf89bdb6.jpg" alt="машина2">
+        <img src="https://avtocharge.ru/doc/images/news/2025/2/image2.png" alt="машина3">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.wFTXBRIWERCCf2WKxOTcngHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="">
+        <img src="https://static.independent.co.uk/2025/01/28/12/49/Best-electric-vehicles.png?trim=0,0,0,0&width=1200&height=800&crop=1200:800" alt="">
+      <h3>Электромобили</h3>
+      <p>Тихо, экологично, современно.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 AutoWorld</p>
+  </footer>
+
+  <style>
+    * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #222;
+  background: #f5f5f5;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:30px;
+    font-size: 50px;
+
+}
+
+header {
+  background: #111;
+  color: #fff;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  gap: 24px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+nav a:hover {
+  color: #f5b301;
+}
+
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), #333;
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h2 {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.btn {
+  display: inline-block;
+  background: #f5b301;
+  color: #000;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #d99f00;
+}
+
+.cards {
+  max-width: 1100px;
+  margin: 40px auto;
+  display: flex;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.card {
+  flex: 1;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding-bottom: 16px;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: #ddd;
+}
+
+.card h3 {
+  margin: 14px 16px 6px;
+}
+
+.card p {
+  margin: 0 16px;
+  color: #555;
+}
+
+footer {
+  background: #111;
+  color: #aaa;
+  text-align: center;
+  padding: 20px;
+}
+  </style>
+
+  <script src="./script.js"></script>
+  </body>
 </html>
