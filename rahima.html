@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <header>
+    <!-- <header>
       <h1>📚Book World</h1>
       <h2>Китептер дуйносуно кош келиниз!</h2>
     </header>
@@ -69,5 +69,192 @@
 <footer>
     <p> © 2026 Book World</p>
 </footer>
+  -->
+    <!-- ------------------------------------------------- -->
+
+    <header>
+      <h1>Hazireti Aisha ene medresesi</h1>
+      <b> Илим • Ыйман • Адеп</b>
+
+      <nav>
+        <a href="">Башкы бет</a>
+        <a href="">Медресе жонундо</a>
+        <a href="">Сабактар</a>
+        <a href="">Устазалар</a>
+        <a href="">Байланыш</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h2>Илим алуу-келечекке жол</h2>
+        <p>
+          Куран, тажвид жана ислам илимдерин уйронуу аркылуу билимибизди
+          арттырабыз
+        </p>
+        <a class="button" href="#about">Биз жонундо</a>
+      </section>
+
+      <section id="about">
+        <h2>Медресе жонундо</h2>
+        <b
+          >Хазирети Айша эне медресеси 2023-жылы Чуй облусунун Сокулук районуна
+          караштуу Жаны-жер айылында ачылган</b>
+        <b
+          >Медреседе кыздар 3 жылдык программа боюнча илим алышат. Окууну
+          ийгиликтуу аяктагандарга диплом берилет.</b
+        S>
+      </section>
+
+      <section id="work">
+        <h2>Окутулуучу сабактар</h2>
+        <div class="cards">
+          <div class="card">Куран</div>
+          <div class="card">Тажвид</div>
+          <div class="card">Акыйда</div>
+          <div class="card">Фикх</div>
+          <div class="card">Хадис</div>
+          <div class="card">Сиро</div>
+          <div class="card">Араб тил</div>
+          <div class="card">Адеп-ахлак</div>
+        </div>
+      </section>
+
+      <section id="teachers">
+        <h2>Устазалар</h2>
+        <div class="cards">
+          <div class="card">Каландарова Динара</div>
+          <div class="card">Ускебай к Мариям</div>
+          <div class="card">Сатыбалдиева Мадина</div>
+          <div class="card">Абдыганиева Рухшона</div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Байланыш</h2>
+        <b>📍Дарек: Сокулук району, Жаны-жер айылы</b>
+      </section>
+    </main>
+    <footer>
+      <p>© 2026 Хазирети Айша эне медресеси</p>
+      <p>Илим менен журоктор жарык болсун</p>
+    </footer>
   </body>
 </html>
+
+<style>
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  scroll-behavior: smooth;
+}
+body{
+  background-color: #f5f7fa;
+  color: #263445;
+  line-height: 1.7;
+}
+
+header{
+  background-color: #17365d;
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+}
+ header h1{
+  color: #e3c477;
+  margin-bottom: 8px;
+ }
+ nav{
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+ }
+ nav a{
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+ }
+ nav a:hover{
+  color: #e3c477;
+ }
+
+ .hero{
+  background: linear-gradient(135deg, #17365d, #315985);
+  color: white;
+  text-align: center;
+  padding: 90px 20px;
+ }
+.hero h2{
+  color: #e3c477;
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+hero p{
+  max-width: 650px;
+  margin: 0 auto 25px;
+}
+.button{
+  display: inline-block;
+  background-color: #e3c477;
+  color: #17365d;
+  padding: 12px 25px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+section:not(.hero){
+  padding: 55px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+section h2{
+  color: #17365d;
+  text-align: center;
+  margin-left: 25px;
+}
+.cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+  gap: 20px;
+}
+.card{
+  background-color: white;
+  border: 1px solid #e3c477;
+  border-radius: 10px;
+  padding: 25px 15px;
+  text-align: center;
+  color: #17365d;
+  font-weight: bold;
+  box-shadow: 0 4px 12px black;
+}
+
+footer{
+  background-color: #17365d;
+  color: white;
+  text-align: center;
+  padding: 25px 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
